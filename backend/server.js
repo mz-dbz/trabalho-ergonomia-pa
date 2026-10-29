@@ -115,7 +115,7 @@ app.post("/api/rotina", (req, res) => {
   });
 });
 
-app.get("*", (req, res, next) => {
+app.get("/{*splat}", (req, res, next) => {
   if (req.path.startsWith("/api/")) return res.status(404).json({ error: "Rota da API não encontrada." });
   return res.sendFile(path.join(FRONTEND_DIR, "index.html"), (error) => {
     if (error) next(error);
