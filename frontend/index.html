@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ErgoMais: ferramentas educativas para observar ergonomia no ambiente de estudo e trabalho.">
+  <title>ErgoMais | Ergonomia na prática</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#inicio" aria-label="ErgoMais, início"><span class="brand-mark">E+</span><span>ErgoMais</span></a>
+    <nav aria-label="Navegação principal">
+      <a href="#ambiente">Ambiente</a>
+      <a href="#posto">Posto de estudo</a>
+      <a href="#pausas">Pausas</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-copy">
+        <span class="eyebrow">ERGONOMIA NO DIA A DIA</span>
+        <h1>Um espaço melhor.<br><span>Uma rotina mais leve.</span></h1>
+        <p>Confira condições do ambiente, organize seu posto de estudo e lembre-se de fazer pausas.</p>
+        <a class="button button-primary" href="#ambiente">Começar avaliação <span aria-hidden="true">↘</span></a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="sun"></div><div class="plant plant-one"></div><div class="desk"></div>
+        <div class="monitor"><div class="monitor-screen"><span>FOCO</span><i></i><i></i><i></i></div><div class="monitor-neck"></div></div>
+        <div class="mug"></div><div class="book book-one"></div><div class="book book-two"></div>
+      </div>
+    </section>
+
+    <section class="section" id="ambiente">
+      <div class="section-heading"><div><span class="eyebrow">01 / CONDIÇÕES DO AMBIENTE</span><h2>Como está o seu espaço?</h2></div><p>Marque as condições que mais se aproximam do local onde você estuda ou trabalha.</p></div>
+      <form id="environment-form" class="panel form-grid">
+        <label>Iluminação
+          <select name="iluminacao" required><option value="">Selecione</option><option value="boa">Boa, sem reflexos fortes</option><option value="fraca">Fraca</option><option value="forte">Forte ou com reflexos</option></select>
+        </label>
+        <label>Ruído
+          <select name="ruido" required><option value="">Selecione</option><option value="baixo">Baixo</option><option value="medio">Moderado</option><option value="alto">Alto, atrapalha a concentração</option></select>
+        </label>
+        <label>Temperatura
+          <select name="temperatura" required><option value="">Selecione</option><option value="confortavel">Confortável</option><option value="fria">Fria demais</option><option value="quente">Quente demais</option></select>
+        </label>
+        <label>Ventilação
+          <select name="ventilacao" required><option value="">Selecione</option><option value="boa">Boa circulação de ar</option><option value="ruim">Pouca circulação de ar</option></select>
+        </label>
+        <div class="form-footer"><p>O resultado é educativo e não substitui uma avaliação profissional.</p><button class="button button-primary" type="submit">Analisar ambiente</button></div>
+      </form>
+      <div id="environment-result" class="result-panel" aria-live="polite" hidden></div>
+    </section>
+
+    <section class="section section-tinted" id="posto">
+      <div class="section-heading"><div><span class="eyebrow">02 / POSTO DE ESTUDO</span><h2>Checklist ergonômico</h2></div><p>Revise os itens abaixo e receba sugestões com base nas suas marcações.</p></div>
+      <form id="workstation-form" class="panel checklist">
+        <label class="check-item"><input type="checkbox" name="cadeira"><span class="check-icon">01</span><span><strong>Cadeira ajustada</strong><small>As costas têm apoio e os pés ficam apoiados.</small></span></label>
+        <label class="check-item"><input type="checkbox" name="monitor"><span class="check-icon">02</span><span><strong>Monitor na altura adequada</strong><small>O topo da tela fica próximo à altura dos olhos.</small></span></label>
+        <label class="check-item"><input type="checkbox" name="teclado"><span class="check-icon">03</span><span><strong>Teclado e mouse bem posicionados</strong><small>Ombros relaxados e punhos em posição confortável.</small></span></label>
+        <label class="check-item"><input type="checkbox" name="mesa"><span class="check-icon">04</span><span><strong>Mesa organizada</strong><small>Objetos usados com frequência ficam ao alcance.</small></span></label>
+        <label class="check-item"><input type="checkbox" name="pausas"><span class="check-icon">05</span><span><strong>Pausas durante a rotina</strong><small>Você alterna tarefas e muda de posição ao longo do dia.</small></span></label>
+        <div class="form-footer"><p id="check-count">0 de 5 itens conferidos</p><button class="button button-primary" type="submit">Ver sugestões</button></div>
+      </form>
+      <div id="workstation-result" class="result-panel" aria-live="polite" hidden></div>
+    </section>
+
+    <section class="section" id="pausas">
+      <div class="section-heading"><div><span class="eyebrow">03 / PAUSAS E CONCENTRAÇÃO</span><h2>Ritmo de foco</h2></div><p>Escolha uma rotina para alternar períodos de concentração e descanso.</p></div>
+      <div class="timer-layout">
+        <div class="panel timer-panel">
+          <div class="timer-mode"><button class="mode-button active" data-minutes="25" data-label="Foco" type="button">Foco · 25 min</button><button class="mode-button" data-minutes="5" data-label="Pausa" type="button">Pausa · 5 min</button><button class="mode-button" data-minutes="15" data-label="Pausa longa" type="button">Pausa longa · 15 min</button></div>
+          <p class="timer-label" id="timer-label">Hora de concentrar</p><div class="timer-display" id="timer-display" role="timer" aria-live="off">25:00</div>
+          <div class="timer-actions"><button id="timer-start" class="button button-primary" type="button">Iniciar</button><button id="timer-reset" class="button button-secondary" type="button">Reiniciar</button></div>
+          <p class="timer-note" id="timer-note" aria-live="polite">Escolha uma tarefa pequena para começar.</p>
+        </div>
+        <aside class="tip-card"><span class="tip-symbol">✳</span><h3>Descansar também faz parte.</h3><p>Nas pausas, levante-se se puder, movimente o corpo, descanse os olhos e beba água.</p><small>Adapte os intervalos às suas necessidades e atividades.</small></aside>
+      </div>
+    </section>
+
+    <section class="disclaimer"><span>ⓘ</span><p><strong>Importante:</strong> o ErgoMais é um projeto educativo para fins escolares. As sugestões são gerais e não substituem orientação de profissionais de saúde e segurança do trabalho.</p></section>
+  </main>
+  <footer><a class="brand" href="#inicio"><span class="brand-mark">E+</span><span>ErgoMais</span></a><p>Projeto escolar · Programação de Aplicativos (PA)</p><a href="https://www.gov.br/fundacentro/pt-br" target="_blank" rel="noreferrer">Referência: Fundacentro ↗</a></footer>
+</body>
+</html>
